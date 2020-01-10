@@ -10,6 +10,31 @@ class FilterForm extends Component {
     this.customValue = '';
   }
 
+  determineOperatorDropDown = () => {
+    const strings = ['user_email', 'user_first_name', 'user_last_name', 'domain', 'path'];
+    const integers = ['screen_width', 'screen_height', 'visits', 'page_response'];
+    if (strings.includes(this.predicate)) {
+      return (
+        <select>
+          <option value='EQUAL'>equals</option>
+          <option value='CONTAINS'>contains</option>
+          <option value='LIKE'>starts with</option>
+          <option value='IN'>in list</option>
+        </select>
+      )
+    } else {
+      return (
+        <select>
+          <option value='='>equals</option>
+          <option value='BETWEEN'>range</option>
+          <option value='>'>greater than</option>
+          <option value='<'>less than</option>
+          <option value='IN'>in list</option>
+        </select>
+      )
+    }
+  }
+
   render() {
     <form>
       <button>-</button>
@@ -24,6 +49,7 @@ class FilterForm extends Component {
         <option value='domain'>Domain</option>
         <option value='path'>Page Path</option>
       </select>
+      {this.determineOperatorDropDown()}
     </form>
   }
 }
