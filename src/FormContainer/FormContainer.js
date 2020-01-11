@@ -7,7 +7,8 @@ class FormContainer extends Component {
   constructor() {
     super()
     this.state = {
-      filters: [{ predicate: 'user_email', operator: '=', customValue1: '', customValue2: 'null' }]
+      filters: [{ predicate: 'user_email', operator: '=', customValue1: '', customValue2: 'undefined' }],
+      response: ''
     };
   };
 
@@ -39,7 +40,14 @@ class FormContainer extends Component {
     });
   };
 
-  
+  sendQuery = async () => {
+    const options = JSON.stringify(this.state.filters);
+    const res = await fetch(`http://localhost:3001/?filters=${options}`);
+    const builtQuery = await res.json();
+    this.setState({
+      response: builtQuery
+    })
+  }
 
   render() {
     const mapForms = this.state.filters.map((form, i) => {
@@ -52,7 +60,6 @@ class FormContainer extends Component {
         operator={form.operator}
         customValue1={form.customValue1}
         customValue2={form.customValue2}
-        display={form.display}
       />);
     });
     return (
@@ -61,7 +68,8 @@ class FormContainer extends Component {
           {mapForms}
           <button className='add-filter-form' onClick={this.handleAddForm}>AND</button>
         </section>
-        <button className='search-btn'>SEARCH</button>
+        {this.state.response && <p>{this.state.response}</p>}
+        <button className='search-btn' onClick={this.sendQuery}>SEARCH</button>
       </main>
     )  
   }
