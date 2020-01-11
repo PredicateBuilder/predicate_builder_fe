@@ -8,6 +8,7 @@ $selectBorder: #BCBCBC;
   align-items: center;
   display: flex;
   flex-direction: row;
+  margin-bottom: 5px;
   width: 70%;
 
   .select--predicate,
@@ -44,6 +45,11 @@ $selectBorder: #BCBCBC;
   .single-input {
     width: 30%;
   }
+}
+
+option:active {
+  position: relative;
+  top: 7vh;
 }
 
 .delete-form-btn {

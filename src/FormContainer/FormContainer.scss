@@ -4,7 +4,13 @@ $btnTextColor: #ffffff;
 .main {
   display: flex;
   flex-direction: column;
+  overflow-y: scroll;
   padding: 15px;
+}
+
+.main,
+.filter-section {
+  height: 90vh;
 }
 
 .add-filter-form,
