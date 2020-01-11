@@ -76,8 +76,8 @@ class FormContainer extends Component {
         <section className='filter-section'>
           {mapForms}
           <button className='add-filter-form' onClick={this.handleAddForm}>AND</button>
-        </section>
         {this.state.response && <p>{this.state.response}</p>}
+        </section>
         <button className='search-btn' onClick={this.sendQuery}>Search</button>
       </main>
     )  
