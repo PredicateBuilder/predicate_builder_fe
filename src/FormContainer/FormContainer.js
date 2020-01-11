@@ -7,15 +7,17 @@ class FormContainer extends Component {
   constructor() {
     super()
     this.state = {
-      filters: [{predicate: 'user_email', operator: '=', customValue: ''}]
-    }
-  }
+      filters: [{ predicate: 'user_email', operator: '=', customValue1: '', customValue2: 'null' }]
+    };
+  };
 
   updateFilter = (values, i) => {
-    const newValues = this.state.filters.slice()
+    const newValues = this.state.filters.slice();
     newValues[i][values[0]] = values[1];
-    this.setState({filters:newValues})
-  }
+    this.setState({
+      filters: newValues
+    });
+  };
 
   handleDeleteForm = (e, i) => {
     e.preventDefault();
@@ -23,8 +25,8 @@ class FormContainer extends Component {
     const updatedFilters = this.state.filters.filter((filter, index) => index !== i);
     this.setState({
       filters: updatedFilters
-    })
-  }
+    });
+  };
 
   handleAddForm = (e) => {
     e.preventDefault();
@@ -34,8 +36,8 @@ class FormContainer extends Component {
         operator: '=',
         customValue: ''
       }]
-    })
-  }
+    });
+  };
 
   
 
@@ -48,7 +50,8 @@ class FormContainer extends Component {
         handleDeleteForm={this.handleDeleteForm}
         predicate={form.predicate}
         operator={form.operator}
-        customValue={form.customValue}
+        customValue1={form.customValue1}
+        customValue2={form.customValue2}
         display={form.display}
       />);
     });

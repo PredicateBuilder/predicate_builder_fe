@@ -3,45 +3,64 @@ import './FilterForm.scss';
 
 class FilterForm extends Component {
 
-  handleChange = (e) => {
+  handleDropDownChange = (e) => {
     const { updateFilter, index } = this.props;
     let valueArr = (e.target.value.split(','));
     updateFilter(valueArr, index);
   };
 
-  determineOperatorDropDown = () => {
-    const strings = ['user_email', 'user_first_name', 'user_last_name', 'domain', 'path'];
-    let operatorValue = ['operator', `${this.props.operator}`].join(',')
+  handleCustomFieldChange = (e) => {
+    const { updateFilter, index } = this.props;
+    const valueArr = [e.target.name, e.target.value];
+    updateFilter(valueArr, index);
+  }
 
-    if (strings.includes(this.props.predicate)) {
+  determineOperatorDropDown = () => {
+    const { operator, predicate } = this.props;
+    const strings = ['user_email', 'user_first_name', 'user_last_name', 'domain', 'path'];
+    let operatorValue = ['operator', `${operator}`].join(',');
+    if (strings.includes(predicate)) {
       return (
-        <select onChange={this.handleChange} value={operatorValue}>
+        <select onChange={this.handleDropDownChange} value={operatorValue}>
           <option value={['operator', '=']}>equals</option>
-          <option value={['operator','CONTAINS']}>contains</option>
-          <option value={['operator','LIKE']}>starts with</option>
-          <option value={['operator','IN']}>in list</option>
+          <option value={['operator', 'CONTAINS']}>contains</option>
+          <option value={['operator', 'LIKE']}>starts with</option>
+          <option value={['operator', 'IN']}>in list</option>
         </select>
       )
     } else {
       return (
-        <select onChange={this.handleChange} value={operatorValue}>
+        <select onChange={this.handleDropDownChange} value={operatorValue}>
           <option value={['operator', '=']}>equals</option>
           <option value={['operator', 'BETWEEN']}>range</option>
           <option value={['operator', '>']}>greater than</option>
           <option value={['operator', '<']}>less than</option>
           <option value={['operator', 'IN']}>in list</option>
         </select>
-      )
-    }
+      );
+    };
+  };
+
+  determineCustomFields = () => {
+    const { operator } = this.props;
+    return operator === 'BETWEEN' ? <><input type='number' name='customValue1' onChange={this.handleCustomFieldChange} /> <p>AND</p> <input type='number' name='customValue2' onChange={this.handleCustomFieldChange} /> </> : <input type={this.determineInputType()} name='customValue1' onChange={this.handleCustomFieldChange}/>
+  }
+
+  determineInputType = () => {
+    const { predicate } = this.props;
+    const strings = ['user_email', 'user_first_name', 'user_last_name', 'domain', 'path'];
+    return strings.includes(predicate) ? 'text' : 'number';
   }
 
   render() {
-    let operator = this.determineOperatorDropDown();
-    let predicateValue = ['predicate', `${this.props.predicate}`].join(',') 
+    const { operator, predicate, index, handleDeleteForm } = this.props;
+    let operatorDropDown = this.determineOperatorDropDown();
+    let predicateValue = ['predicate', `${predicate}`].join(',');
+    let customFields = this.determineCustomFields();
     return (
       <form>
-        <button onClick={(e) => this.props.handleDeleteForm(e, this.props.index)}>-</button>
-        <select onChange={this.handleChange} value={predicateValue}>
+        <button onClick={(e) => handleDeleteForm(e, index)}>-</button>
+        <select onChange={this.handleDropDownChange} value={predicateValue}>
           <option value={['predicate', 'user_email']}>User Email</option>
           <option value={['predicate', 'screen_width']}>Screen Width</option>
           <option value={['predicate', 'screen_height']}>Screen Height</option>
@@ -52,7 +71,9 @@ class FilterForm extends Component {
           <option value={['predicate', 'domain']}>Domain</option>
           <option value={['predicate', 'path']}>Page Path</option>
         </select>
-        {operator}
+        {operator === 'BETWEEN' && <p>IS</p>}
+        {operatorDropDown}
+        {customFields}
       </form>
     );
   };
