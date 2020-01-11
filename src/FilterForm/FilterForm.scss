@@ -47,9 +47,12 @@ $selectBorder: #BCBCBC;
   }
 }
 
-option:active {
-  position: relative;
-  top: 7vh;
+.add-filter-form {
+  height: 5vh;
+  max-height: 35px;
+  max-width: 60px;
+  width: 6vw;
+  font-size: 1rem;
 }
 
 .delete-form-btn {
