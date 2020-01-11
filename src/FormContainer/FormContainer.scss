@@ -1,0 +1,26 @@
+$containerBtnColor: #128EC8;
+$btnTextColor: #ffffff;
+
+.main {
+  display: flex;
+  flex-direction: column;
+  padding: 15px;
+}
+
+.add-filter-form,
+.search-btn {
+  background: $containerBtnColor;
+  color: $btnTextColor;
+}
+
+.search-btn {
+  position: absolute;
+  bottom: 15px;
+  font-size: 1.1rem;
+  height: 10%;
+  max-height: 40px;
+  max-width: 225px;
+  right: 15px;
+  width: 20%;
+  
+}
