@@ -20,6 +20,9 @@ class FormContainer extends Component {
   updateFilter = (values, i) => {
     const newValues = this.state.filters.slice();
     newValues[i][values[0]] = values[1];
+    if (newValues[i].operator !== 'BETWEEN') {
+      newValues[i].customValue2 = 'undefined';
+    }
     this.setState({
       filters: newValues
     });
