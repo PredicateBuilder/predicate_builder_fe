@@ -21,7 +21,7 @@ class FilterForm extends Component {
     let operatorValue = ['operator', `${operator}`].join(',');
     if (strings.includes(predicate)) {
       return (
-        <select onChange={this.handleDropDownChange} value={operatorValue}>
+        <select className='select--operator' onChange={this.handleDropDownChange} value={operatorValue}>
           <option value={['operator', '=']}>equals</option>
           <option value={['operator', 'CONTAINS']}>contains</option>
           <option value={['operator', 'LIKE']}>starts with</option>
@@ -30,7 +30,7 @@ class FilterForm extends Component {
       )
     } else {
       return (
-        <select onChange={this.handleDropDownChange} value={operatorValue}>
+        <select className='select-operator' onChange={this.handleDropDownChange} value={operatorValue}>
           <option value={['operator', '=']}>equals</option>
           <option value={['operator', 'BETWEEN']}>range</option>
           <option value={['operator', '>']}>greater than</option>
@@ -43,7 +43,7 @@ class FilterForm extends Component {
 
   determineCustomFields = () => {
     const { operator } = this.props;
-    return operator === 'BETWEEN' ? <><input type='number' name='customValue1' onChange={this.handleCustomFieldChange} /> <p>AND</p> <input type='number' name='customValue2' onChange={this.handleCustomFieldChange} /> </> : <input type={this.determineInputType()} name='customValue1' onChange={this.handleCustomFieldChange}/>
+    return operator === 'BETWEEN' ? <><input type='number' name='customValue1' onChange={this.handleCustomFieldChange} /> <p className='p--article'>AND</p> <input type='number' name='customValue2' onChange={this.handleCustomFieldChange} /> </> : <input type={this.determineInputType()} name='customValue1' onChange={this.handleCustomFieldChange}/>
   }
 
   determineInputType = () => {
@@ -58,9 +58,9 @@ class FilterForm extends Component {
     let predicateValue = ['predicate', `${predicate}`].join(',');
     let customFields = this.determineCustomFields();
     return (
-      <form>
+      <form className='filter-form'>
         <button onClick={(e) => handleDeleteForm(e, index)}>-</button>
-        <select onChange={this.handleDropDownChange} value={predicateValue}>
+        <select className='select--predicate' onChange={this.handleDropDownChange} value={predicateValue}>
           <option value={['predicate', 'user_email']}>User Email</option>
           <option value={['predicate', 'screen_width']}>Screen Width</option>
           <option value={['predicate', 'screen_height']}>Screen Height</option>
@@ -71,7 +71,7 @@ class FilterForm extends Component {
           <option value={['predicate', 'domain']}>Domain</option>
           <option value={['predicate', 'path']}>Page Path</option>
         </select>
-        {operator === 'BETWEEN' && <p>IS</p>}
+        {operator === 'BETWEEN' && <p className='p--article'>IS</p>}
         {operatorDropDown}
         {customFields}
       </form>

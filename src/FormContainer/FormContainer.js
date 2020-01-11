@@ -72,13 +72,13 @@ class FormContainer extends Component {
       />);
     });
     return (
-      <main>
+      <main className='main'>
         <section className='filter-section'>
           {mapForms}
           <button className='add-filter-form' onClick={this.handleAddForm}>AND</button>
         </section>
         {this.state.response && <p>{this.state.response}</p>}
-        <button className='search-btn' onClick={this.sendQuery}>SEARCH</button>
+        <button className='search-btn' onClick={this.sendQuery}>Search</button>
       </main>
     )  
   }
