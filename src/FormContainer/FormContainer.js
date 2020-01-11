@@ -7,7 +7,12 @@ class FormContainer extends Component {
   constructor() {
     super()
     this.state = {
-      filters: [{ predicate: 'user_email', operator: '=', customValue1: '', customValue2: 'undefined' }],
+      filters: [{
+        predicate: 'user_email',
+        operator: '=',
+        customValue1: '',
+        customValue2: 'undefined'
+      }],
       response: ''
     };
   };
@@ -35,7 +40,8 @@ class FormContainer extends Component {
       filters: [...this.state.filters, {
         predicate: 'user_email',
         operator: '=',
-        customValue: ''
+        customValue1: '',
+        customValue2: 'undefined'
       }]
     });
   };
