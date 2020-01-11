@@ -1,68 +1,43 @@
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+# Predicate Builder
 
-## Available Scripts
+## Requirements
+- Utilized:
+   - React
+   - Javascript
+   - Node 
+   - Express
+- Styling:
+  - Largely utilized the provided comp, with only slight variances
+- Time Required:
+  - Express set-up: approx 3 hrs
+  - Building in React: approx 5 hrs
+  - Styling: approx 3 hrs
+  #### Total 11 hrs
 
-In the project directory, you can run:
+## Local Setup
 
-### `npm start`
+Clone repo.
+```
+git clone https://github.com/PredicateBuilder/predicate_builder_fe.git
+```
+Install dependencies.
+```
+npm install
+```
+Run browser.
+```
+npm start
+```
 
-Runs the app in the development mode.<br />
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+##### There is an additional explanation-branch that can be checked out to for commented lines that provide inisght into the code, and my process.
+```
+git checkout explanation branch
+```
 
-The page will reload if you make edits.<br />
-You will also see any lint errors in the console.
+#### WireFrame 
+![WireFrame]<img width="1175" alt="Predicate_Wire_Frame" src="https://user-images.githubusercontent.com/50842455/72211913-9c462880-3490-11ea-8027-8277da016144.png">
 
-### `npm test`
+#### Screen Shot
+![ScreenShot]<img width="1440" alt="Screen Shot 2020-01-11 at 4 35 48 PM" src="https://user-images.githubusercontent.com/50842455/72211945-18d90700-3491-11ea-9c92-28ff049d2bb6.png">
 
-Launches the test runner in the interactive watch mode.<br />
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
 
-### `npm run build`
-
-Builds the app for production to the `build` folder.<br />
-It correctly bundles React in production mode and optimizes the build for the best performance.
-
-The build is minified and the filenames include the hashes.<br />
-Your app is ready to be deployed!
-
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `npm run eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
-
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (Webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
-
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/code-splitting
-
-### Analyzing the Bundle Size
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size
-
-### Making a Progressive Web App
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app
-
-### Advanced Configuration
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/advanced-configuration
-
-### Deployment
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/deployment
-
-### `npm run build` fails to minify
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify
