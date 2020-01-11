@@ -1,18 +1,69 @@
 $articleBackgroundColor: #E7EAF1;
 $articleTextColor: #000000;
+$dropDownIcon: 'https://www.dininghour.com/assets/sdistributer_assets/images/drop-down-arrow.svg';
+$selectBackground: rgb(228, 228, 228);
+$selectBorder: #BCBCBC;
 
 .filter-form {
-  width: 50%;
+  align-items: center;
+  display: flex;
+  flex-direction: row;
+  width: 70%;
 
   .select--predicate,
   .select--operator {
-    width: 35%;
+    appearance: none;
+    background-color: $selectBackground;
+	  background-image: url(#{$dropDownIcon});
+	  background-repeat: no-repeat, repeat;
+	  background-position: right .7rem top 50%, 0 0;
+    background-size: .7rem auto, 100%;
+    border: 2px solid $selectBorder;
+    font-size: 1rem;
+    font-weight: 700;
     margin-right: 10px;
+    padding: .5rem;
+    width: 27%;
   }
 
   .p--article {
-    display: inline;
+    align-items: center;
     background: $articleBackgroundColor;
     color: $articleTextColor;
+    display: flex;
+    font-size: .75rem;
+    justify-content: center;
+    margin-right: 10px;
+    width: 5vw;
   }
+
+  .range-input {
+    width: 10%;
+  }
+
+  .single-input {
+    width: 30%;
+  }
+}
+
+.delete-form-btn {
+  border-radius: 2px;
+  font-size: 1.2rem;
+  margin-right: 3px;
+  max-width: 40px;
+  width: 4vw;
+}
+
+.delete-form-btn,
+.select--predicate,
+.select--operator,
+.p--article {
+  border-radius: 1px;
+  height: 7vh;
+}
+
+.range-input,
+.single-input {
+  height: 6vh;
+  margin-right: 10px;
 }

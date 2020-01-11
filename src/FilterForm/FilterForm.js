@@ -30,7 +30,7 @@ class FilterForm extends Component {
       )
     } else {
       return (
-        <select className='select-operator' onChange={this.handleDropDownChange} value={operatorValue}>
+        <select className='select--operator' onChange={this.handleDropDownChange} value={operatorValue}>
           <option value={['operator', '=']}>equals</option>
           <option value={['operator', 'BETWEEN']}>range</option>
           <option value={['operator', '>']}>greater than</option>
@@ -43,7 +43,13 @@ class FilterForm extends Component {
 
   determineCustomFields = () => {
     const { operator } = this.props;
-    return operator === 'BETWEEN' ? <><input type='number' name='customValue1' onChange={this.handleCustomFieldChange} /> <p className='p--article'>AND</p> <input type='number' name='customValue2' onChange={this.handleCustomFieldChange} /> </> : <input type={this.determineInputType()} name='customValue1' onChange={this.handleCustomFieldChange}/>
+    return operator === 'BETWEEN' ?
+      <>
+        <input className='range-input' type='number' name='customValue1' onChange={this.handleCustomFieldChange} />
+        <p className='p--article'>AND</p>
+        <input className='range-input' type='number' name='customValue2' onChange={this.handleCustomFieldChange} />
+      </> :
+      <input className='single-input' type={this.determineInputType()} name='customValue1' onChange={this.handleCustomFieldChange} />
   }
 
   determineInputType = () => {
@@ -59,7 +65,7 @@ class FilterForm extends Component {
     let customFields = this.determineCustomFields();
     return (
       <form className='filter-form'>
-        <button onClick={(e) => handleDeleteForm(e, index)}>-</button>
+        <button className='delete-form-btn' onClick={(e) => handleDeleteForm(e, index)}>-</button>
         <select className='select--predicate' onChange={this.handleDropDownChange} value={predicateValue}>
           <option value={['predicate', 'user_email']}>User Email</option>
           <option value={['predicate', 'screen_width']}>Screen Width</option>
